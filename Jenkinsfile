@@ -39,8 +39,8 @@ pipeline {
         stage('Deploy project to Tomcat') {
             steps {
                 sh '''
-                rmdir /S /Q "%TOMCAT_HOME%/webapps/your-app"
-                xcopy /s /e /i /y /q build "%TOMCAT_HOME%/webapps/your-app"
+                sh 'rm -rf "$TOMCAT_HOME/webapps/your-app"'
+sh 'cp -r build "$TOMCAT_HOME/webapps/your-app"'
                 '''
             }
         }
