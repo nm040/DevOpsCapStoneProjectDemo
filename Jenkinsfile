@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         BRANCH_NAME = "${env.GIT_BRANCH ?: 'main'}" // Default to 'main' if BRANCH_NAME is null
-        TOMCAT_HOME = 'C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0' // Update with your Tomcat installation path
+        TOMCAT_HOME = '/Users/964340/Documents/apache-tomcat-11.0.1' // Update with your Tomcat installation path
     }
 
     tools {
@@ -20,25 +20,25 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                bat 'npm install'
+                sh 'npm install'
             }
         }
 
         stage('Install Test dependencies') {
             steps {
-                bat 'npm install --save-dev jest-junit'
+                sh 'npm install --save-dev jest-junit'
             }
         }
 
         stage('Buil project') {
             steps {
-                bat 'npm run build'
+                sh 'npm run build'
             }
         }
 
         stage('Deploy project to Tomcat') {
             steps {
-                bat '''
+                sh '''
                 rmdir /S /Q "%TOMCAT_HOME%\\webapps\\your-app"
                 xcopy /s /e /i /y /q build "%TOMCAT_HOME%\\webapps\\your-app"
                 '''
@@ -47,7 +47,7 @@ pipeline {
 
         stage('Test the project') {
             steps {
-                bat 'npm test -- --ci'
+                sh 'npm test -- --ci'
             }
             post {
                 always {
