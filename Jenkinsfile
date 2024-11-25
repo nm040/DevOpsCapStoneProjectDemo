@@ -2,13 +2,12 @@ pipeline {
     agent any
 
     environment {
-        NODE_VERSION = 'NodeJS 18.16.0' // Specify Node version if needed
         BRANCH_NAME = "${env.GIT_BRANCH ?: 'main'}" // Default to 'main' if BRANCH_NAME is null
         TOMCAT_HOME = 'C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0' // Update with your Tomcat installation path
     }
 
     tools {
-        nodejs "${NODE_VERSION}"
+        nodejs "18.16.0"
     }
 
     stages {
