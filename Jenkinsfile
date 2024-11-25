@@ -2,18 +2,19 @@ pipeline {
     agent any
 
     environment {
-        //NODE_VERSION = 'NodeJS 20' // Specify Node version if needed
+        NODE_VERSION = 'NodeJS 20' // Specify Node version if needed
         BRANCH_NAME = "${env.GIT_BRANCH ?: 'main'}" // Default to 'main' if BRANCH_NAME is null
         TOMCAT_HOME = 'C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0' // Update with your Tomcat installation path
     }
 
     tools {
-        //nodejs "${NODE_VERSION}"
+        nodejs "${NODE_VERSION}"
     }
 
     stages {
-        stage('Checkout code') {
+        stage('Checkout') {
             steps {
+                // Checkout code from Git
                 checkout scm
             }
         }
@@ -30,7 +31,7 @@ pipeline {
             }
         }
 
-        stage('Build project') {
+        stage('Buil project') {
             steps {
                 bat 'npm run build'
             }
