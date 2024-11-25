@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-        stage('Buil project') {
+        stage('Build the project') {
             steps {
                 sh 'npm run build'
             }
@@ -39,8 +39,8 @@ pipeline {
         stage('Deploy project to Tomcat') {
             steps {
                 sh '''
-                rmdir /S /Q "%TOMCAT_HOME%\\webapps\\your-app"
-                xcopy /s /e /i /y /q build "%TOMCAT_HOME%\\webapps\\your-app"
+                rmdir /S /Q "%TOMCAT_HOME%/webapps/your-app"
+                xcopy /s /e /i /y /q build "%TOMCAT_HOME%/webapps/your-app"
                 '''
             }
         }
