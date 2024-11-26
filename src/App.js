@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <h1>DevOps Capstone Project Demo</h1>
         <p>Jenkins pipeline.</p>
-        <p>Failure</p>
+        <p>Success</p>
       </header>
     </div>
   );
