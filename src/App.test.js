@@ -16,6 +16,6 @@ test('renders description', () => {
 
 test('renders result', () => {
   render(<App />);
-  const descriptionElement = screen.getByText('Success');
+  const descriptionElement = screen.getByText('Suceess');
   expect(descriptionElement).toBeInTheDocument();
 });
