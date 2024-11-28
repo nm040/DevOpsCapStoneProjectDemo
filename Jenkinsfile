@@ -38,7 +38,6 @@ pipeline {
 
         stage('Deploy project to Tomcat') {
             steps {
-                // sh 'rm -rf "$TOMCAT_HOME/webapps/your-app"'
                 sh 'cp -r build "$TOMCAT_HOME/webapps/your-app"'
             }
         }
